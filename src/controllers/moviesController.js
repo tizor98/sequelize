@@ -40,10 +40,10 @@ const controller = {
 
       let movies = await db.Movies.findAll({
          where: {
-            release_date: {[Op.gte]: "2008-01-01 00:00:00" }
+            rating: {[Op.gte]: 8 }
          },
          order: [
-            ["release_date", "DESC"]
+            ["rating", "DESC"]
          ],
          limit: 5
       }).catch(error)

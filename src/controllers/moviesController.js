@@ -7,7 +7,7 @@ const controller = {
    
    list: async (req, res) => {
       
-      let movies = await db.Movies.findAll().catch(error)
+      const movies = await db.Movies.findAll().catch(error)
       
       res.render("moviesList", {movies: movies})
 
@@ -15,7 +15,7 @@ const controller = {
 
    detail: async (req, res) => {
       
-      let movie = await db.Movies.findByPk(req.params.id).catch(error)
+      const movie = await db.Movies.findByPk(req.params.id).catch(error)
 
       res.render("moviesDetail", {movie: movie})
 
@@ -23,7 +23,7 @@ const controller = {
 
    new: async (req, res) => {
       
-      let movies = await db.Movies.findAll({
+      const movies = await db.Movies.findAll({
          where: {
             release_date: {[Op.gte]: "2008-01-01 00:00:00" }
          },
@@ -38,7 +38,7 @@ const controller = {
 
    recomended: async (req, res) => {
 
-      let movies = await db.Movies.findAll({
+      const movies = await db.Movies.findAll({
          where: {
             rating: {[Op.gte]: 8 }
          },

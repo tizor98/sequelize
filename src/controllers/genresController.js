@@ -6,7 +6,7 @@ const controller = {
 
    list: async (req, res) => {
 
-      let genres = await db.Genres.findAll().catch(error)
+      const genres = await db.Genres.findAll().catch(error)
       
       res.render("genresList", {genres: genres})
 
@@ -14,7 +14,7 @@ const controller = {
 
    detail: async (req, res) => {
 
-      let genre = await db.Genres.findByPk(req.params.id).catch(error)
+      const genre = await db.Genres.findByPk(req.params.id).catch(error)
 
       res.render("genresDetail", {genre: genre})
 

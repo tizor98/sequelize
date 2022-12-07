@@ -65,8 +65,8 @@ const controller = {
          const movie = await db.Movies.findByPk(req.params.id)
          res.render("moviesEdit", {Movie: movie})
          
-      } catch (error) {
-         console.log(error)
+      } catch (err) {
+         error(err)
       }   
 
    },
@@ -80,15 +80,16 @@ const controller = {
             rating: req.body.rating,
             awards: req.body.awards,
             release_date: req.body.release_date,
-            length: req.body.length
+            length: req.body.length,
+            genre_id: req.body.genre_id
          },{
             where: {id: req.params.id}
          })
 
          res.redirect('/movies')
 
-      } catch (error) {
-         console.log(error)
+      } catch (err) {
+         error(err)
       }
 
    },
@@ -100,8 +101,8 @@ const controller = {
          const movie = await db.Movies.findByPk(req.params.id)
          res.render('moviesDelete', {Movie: movie})
 
-      } catch (error) {
-         console.log(error)
+      } catch (err) {
+         error(err)
       }
 
    },
@@ -116,8 +117,8 @@ const controller = {
 
          res.redirect('/movies')
 
-      } catch (error) {
-         console.log(error)
+      } catch (err) {
+         error(err)
       }
 
    },
@@ -129,8 +130,8 @@ const controller = {
          const movie = await db.Movies.findByPk(req.params.id)
          res.render('moviesAdd', {Movie: movie})
 
-      } catch (error) {
-         console.log(error)
+      } catch (err) {
+         error(err)
       }
 
    },
@@ -144,13 +145,14 @@ const controller = {
             rating: req.body.rating,
             awards: req.body.awards,
             release_date: req.body.release_date,
-            length: req.body.length
+            length: req.body.length,
+            genre_id: req.body.genre_id
          })
 
          res.redirect('/movies')
 
-      } catch (error) {
-         console.log(error)
+      } catch (err) {
+         error(err)
       }
 
    }

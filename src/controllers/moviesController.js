@@ -62,8 +62,11 @@ const controller = {
 
       try {
          
-         const movie = await db.Movies.findByPk(req.params.id)
-         res.render("moviesEdit", {Movie: movie})
+         const movie = await db.Movies.findByPk(req.params.id, {
+            include: [{association: 'genres'}]
+         })
+         const genres = await db.Genres.findAll()
+         res.render("moviesEdit", {Movie: movie, Genres: genres})
          
       } catch (err) {
          error(err)
@@ -127,8 +130,8 @@ const controller = {
 
       try {
          
-         const movie = await db.Movies.findByPk(req.params.id)
-         res.render('moviesAdd', {Movie: movie})
+         const genres = await db.Genres.findAll()
+         res.render('moviesAdd', {genres: genres})
 
       } catch (err) {
          error(err)

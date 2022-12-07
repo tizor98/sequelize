@@ -17,10 +17,12 @@
         <form action="/movies/delete/<%= Movie.id %>?_method=DELETE" method="POST">
             <br>
             <p> <button class="botonBorrar" type="submit">Borrar la Película</button>
-            
-            <a  class="botonVolver" href="/movies">Listado de Películas</a></p>
-
+            <br>
         </form>
+        <br>
+        <form action="/movies" method="get">
+         <button type="submit">Lista de películas</button>
+      </form>
     </p>
     
 </body>

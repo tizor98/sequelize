@@ -7,7 +7,9 @@ const controller = {
    
    list: async (req, res) => {
       
-      const movies = await db.Movies.findAll().catch(error)
+      const movies = await db.Movies.findAll({
+         include: [{association: 'genres'}]
+      }).catch(error)
       
       res.render("moviesList", {movies: movies})
 
@@ -15,7 +17,9 @@ const controller = {
 
    detail: async (req, res) => {
       
-      const movie = await db.Movies.findByPk(req.params.id).catch(error)
+      const movie = await db.Movies.findByPk(req.params.id, {
+         include: [{association: 'genres'}]
+      }).catch(error)
 
       res.render("moviesDetail", {movie: movie})
 
@@ -29,7 +33,8 @@ const controller = {
          },
          order: [
             ["release_date", "DESC"]
-         ]
+         ],
+         include: [{association: 'genres'}]
       }).catch(error)
 
       res.render("newestMovies", {movies:movies})
@@ -45,7 +50,8 @@ const controller = {
          order: [
             ["rating", "DESC"]
          ],
-         limit: 5
+         limit: 5,
+         include: [{association: 'genres'}]
       }).catch(error)
 
       res.render("recommendedMovies", {movies:movies})

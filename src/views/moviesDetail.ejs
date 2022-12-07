@@ -13,6 +13,9 @@
     </figure>
     <h1><%= movie.title %> </h1>    
     <br>
+    <% if (movie.genres.name) { %>
+      <p>GENRE: <%= movie.genres.name %> </p>
+    <% } %>
     <p>RATING: <%= movie.rating %> </p>
     <p>AWARDS: <%= movie.awards %> </p>
     <p>LENGTH: <%= movie.length + ' min'%> </p>

@@ -8,14 +8,6 @@ module.exports = (sequelize, DataTypes) => {
          autoIncrement: true,
          primaryKey: true
       },
-      created_at: {
-         type: DataTypes.DATE,
-         allowNull: true
-      },
-      updated_at: {
-         type: DataTypes.DATE,
-         allowNull: true
-      },
       name: {
          type: DataTypes.STRING(100),
          allowNull: true
@@ -32,7 +24,11 @@ module.exports = (sequelize, DataTypes) => {
 
    const config = {
       tableName: "genres",
-      timestamps: false
+      timestamps: true,
+      createdAt: 'created_at',
+      updatedAt: 'updated_at',
+      paranoid: true,
+      deletedAt: 'deleted_at'
    }
 
    const Genre = sequelize.define(

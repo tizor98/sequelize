@@ -10,8 +10,6 @@ module.exports = (sequelize, DataTypes) => {
            primaryKey: true,
            autoIncrement: true
        },
-       // created_at: DataTypes.TIMESTAMP,
-       // updated_at: DataTypes.TIMESTAMP,
        first_name: {
            type: DataTypes.STRING(100),
            allowNull: false
@@ -28,10 +26,12 @@ module.exports = (sequelize, DataTypes) => {
    }
 
    const config = {
-       timestamps: true,
-       createdAt: 'created_at',
-       updatedAt: 'updated_at',
-       deletedAt: false
+      tableName: 'actors',
+      timestamps: true,
+      createdAt: 'created_at',
+      updatedAt: 'updated_at',
+      paranoid: true,
+      deletedAt: 'deleted_at'
    }
 
    const Actor = sequelize.define(

@@ -8,14 +8,6 @@ module.exports = (sequelize, DataTypes) => {
          autoIncrement: true,
          primaryKey: true
       },
-      created_at: {
-         type: DataTypes.DATE,
-         allowNull: true
-      },
-      updated_at: {
-         type: DataTypes.DATE,
-         allowNull: true
-      },
       title: {
          type: DataTypes.STRING(500),
          allowNull: true
@@ -45,7 +37,11 @@ module.exports = (sequelize, DataTypes) => {
 
    const config = {
       tableName: "movies",
-      timestamps: false
+      timestamps: true,
+      createdAt: 'created_at',
+      updatedAt: 'updated_at',
+      paranoid: true,
+      deletedAt: 'deleted_at'
    }
 
    const Movie = sequelize.define(

@@ -1,3 +1,5 @@
+// Falta implementar este modelo. Para hacer crud con esto se debe hacer el modelo de la tabla pivot
+
 module.exports = (sequelize, DataTypes) => {
 
    const alias = 'Actors'
